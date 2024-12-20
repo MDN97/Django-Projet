@@ -1,0 +1,113 @@
+<div [@routerTransition]>
+    <h2 class="page-header">
+        Etudiant
+    </h2>
+
+    <div class="row justify-content-end">
+        <div class="col align-self-end">
+            <button class="btn btn-success" (click)="open(content)">Ajouter un Etudiant</button>
+        </div>
+    </div>
+    <div class="card-body table-responsive">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Email</th>
+                <th>Groupe</th>
+                <th>Etat</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let s of students">
+                <td>{{s.id}}</td>
+                <td>{{s.Prenom}}</td>
+                <td>{{s.Nom}}</td>
+                <td>{{s.Adr_mail}}</td>
+                <td>{{s.groupe}}</td>
+                <td>{{s.Etat }}</td>
+                <td>
+                    <button class="btn mr-1 btn-primary" (click)="edit(s, content)"><i class="fa fa-edit"></i></button>
+                    <button class="btn btn-danger" (click)="delete(s.id)"><i class="fa fa-trash"></i>
+                    </button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+
+<ng-template #content let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Etudiant Formulaire </h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <form role="form" class="editForm" novalidate
+              [formGroup]="studentForm">
+            <div class="row">
+                <div class='col-12 col-sm-4 col-md-4'>
+                    <div class="form-group">
+                        <label class="form-control-label" for="id">id</label>
+                        <input class="form-control input-md" formControlName="id" required id="id"
+                               name="id" readonly
+                               type="text">
+                    </div>
+                </div>
+                <div class='col-12 col-sm-4 col-md-4'>
+                    <div class="form-group">
+                        <label class="form-control-label" for="Nom">Nom</label>
+                        <input class="form-control input-md" formControlName="Nom" required id="Nom"
+                               name="Nom"
+                               type="text">
+                    </div>
+                </div>
+                <div class='col-12 col-sm-4 col-md-4'>
+                    <div class="form-group">
+                        <label class="form-control-label" for="Prenom">Prenom</label>
+                        <input class="form-control input-md" formControlName="Prenom" required id="Prenom"
+                               name="Prenom"
+                               type="text">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class='col-12 col-sm-8 col-md-8'>
+                    <div class="form-group">
+                        <label class="form-control-label" for="Adr_mail">Email</label>
+                        <input class="form-control input-md" formControlName="Adr_mail" required id="Adr_mail"
+                               name="Adr_mail"
+                               type="text">
+                    </div>
+                </div>
+                <div class='col-12 col-sm-4 col-md-4'>
+                    <div class="form-group">
+                        <label class="form-control-label" for="Etat">Etat</label>
+                        <input class="form-control input-md" formControlName="Etat" required id="Etat"
+                               name="Etat"
+                               type="text">
+                    </div>
+                </div>
+                <div class='col-12 col-sm-4 col-md-4'>
+                    <div class="form-group">
+                        <label class="form-control-label" for="groupe">Groupe</label>
+                        <input class="form-control input-md" formControlName="groupe" required id="groupe"
+                               name="groupe"
+                               type="number">
+                    </div>
+                </div>
+            </div>
+
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click'); save()">Save</button>
+    </div>
+</ng-template>

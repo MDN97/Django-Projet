@@ -1,0 +1,126 @@
+<div [@routerTransition]>
+    <h2 class="page-header">
+        Enregistrement
+    </h2>
+
+    <div class="row justify-content-end">
+        <div class="col align-self-end">
+            <button class="btn btn-success" (click)="open(content)">Ajouter un Enregistrement</button>
+        </div>
+    </div>
+    <div class="card-body table-responsive">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Nom</th>
+                    <th>Chemin</th>
+                    <th>Type</th>
+                    <th>Niveau</th>
+                    <th>Id Seance</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let s of enregistrement">
+                    <td>{{ s.id }}</td>
+                    <td>{{ s.Nom }}</td>
+                    <td>{{ s.Chemin }}</td>
+                    <td>{{ s.Type }}</td>
+                    <td>{{ s.niveau }}</td>
+                    <td>{{ s.seance }}</td>
+                    <td>
+                        <button class="btn mr-1 btn-primary" (click)="edit(s, content)">
+                            <i class="fa fa-edit"></i>
+                        </button>
+                        <button class="btn btn-danger" (click)="delete(s.id)"><i class="fa fa-trash"></i></button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<ng-template #content let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Enregistrement Formulaire</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <form role="form" class="editForm" novalidate [formGroup]="enregistrementForm">
+            <div class="row">
+                <div class="col-12 col-sm-4 col-md-3">
+                    <div class="form-group">
+                        <label class="form-control-label" for="idd">ID</label>
+                        <input
+                            class="form-control input-md"
+                            formControlName="id"
+                            required
+                            id="idd"
+                            name="idd"
+                            readonly
+                            type="text"
+                        />
+                    </div>
+                </div>
+                <div class="col-12 col-sm-8 col-md-3">
+                    <div class="form-group">
+                        <label class="form-control-label" for="Nom">Nom</label>
+                        <input
+                            class="form-control input-md"
+                            formControlName="Nom"
+                            required
+                            id="Nom"
+                            name="Nom"
+                            type="text"
+                        />
+                    </div>
+                </div>
+                <div class="col-12 col-sm-8 col-md-3">
+                    <div class="form-group">
+                        <label class="form-control-label" for="Chemin">Niveau</label>
+                        <input
+                            class="form-control input-md"
+                            formControlName="niveau"
+                            required
+                            id="niveau"
+                            name="niveau"
+                            type="text"
+                        />
+                    </div>
+                </div>
+                <div class="col-12 col-sm-8 col-md-3">
+                    <div class="form-group">
+                        <label class="form-control-label" for="Type">Type</label>
+                        <input
+                            class="form-control input-md"
+                            formControlName="Type"
+                            required
+                            id="Type"
+                            name="Type"
+                            type="text"
+                        />
+                    </div>
+                </div>
+                <div class="col-12 col-sm-8 col-md-3">
+                    <div class="form-group">
+                        <label class="form-control-label" for="seance">ID Seance</label>
+                        <input
+                            class="form-control input-md"
+                            formControlName="seance"
+                            required
+                            id="seance"
+                            name="seance"
+                            type="text"
+                        />
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click'); save()">Save</button>
+    </div>
+</ng-template>

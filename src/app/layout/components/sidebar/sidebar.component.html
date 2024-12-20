@@ -1,0 +1,40 @@
+<nav [ngClass]="{ sidebarPushRight: isActive, collapsed: collapsed }" class="sidebar">
+    <div class="list-group">
+        <a [routerLinkActive]="['router-link-active']" [routerLink]="['/students']" class="list-group-item">
+            <i class="fa fa-fw fa-users"></i>&nbsp;
+            <span>{{ 'Etudiant' | translate }}</span>
+        </a>
+        <a [routerLinkActive]="['router-link-active']" [routerLink]="['/teachers']" class="list-group-item">
+            <i class="fa fa-fw fa-suitcase"></i>&nbsp;
+            <span>{{ 'Enseignant' | translate }}</span>
+        </a>
+        <a [routerLinkActive]="['router-link-active']" [routerLink]="['/cours']" class="list-group-item">
+            <i class="fa fa-fw fa-book"></i>&nbsp;
+            <span>{{ 'Cours' | translate }}</span>
+        </a>
+        <a [routerLinkActive]="['router-link-active']" [routerLink]="['/seance']" class="list-group-item">
+            <i class="fa fa-fw fa-book"></i>&nbsp;
+            <span>{{ 'Seance' | translate }}</span>
+        </a>
+        <a [routerLinkActive]="['router-link-active']" [routerLink]="['/groupe']" class="list-group-item">
+            <i class="fa fa-fw fa-group"></i>&nbsp;
+            <span>{{ 'Groupe' | translate }}</span>
+        </a>
+        <a [routerLinkActive]="['router-link-active']" [routerLink]="['/absence']" class="list-group-item">
+            <i class="fa fa-fw fa-ban"></i>&nbsp;
+            <span>{{ 'Absence' | translate }}</span>
+        </a>
+        <a [routerLinkActive]="['router-link-active']" [routerLink]="['/enregistrement']" class="list-group-item">
+            <i class="fa fa-fw fa-border"></i>&nbsp;
+            <span>{{ 'Enregistrement' | translate }}</span>
+        </a>
+        <a [routerLinkActive]="['router-link-active']" [routerLink]="['/outil']" class="list-group-item">
+            <i class="fa fa-fw fa-border"></i>&nbsp;
+            <span>{{ 'Outil ' | translate }}</span>
+        </a>
+    </div>
+    <div (click)="toggleCollapsed()" [ngClass]="{ collapsed: collapsed }" class="toggle-button">
+        <i class="fa fa-fw fa-angle-double-{{ collapsed ? 'right' : 'left' }}"></i>&nbsp;
+        <span>{{ 'Collapse Sidebar' | translate }}</span>
+    </div>
+</nav>
